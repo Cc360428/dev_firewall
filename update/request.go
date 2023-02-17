@@ -27,41 +27,6 @@ const (
 
 )
 
-/**
-
-获取公网IP地址：
-
-业务操作：
-1.用户登录
- POST https://10.1.1.1/api/v1/namespaces/public/login
- header字段==》Connection：keep-alive Content-Type：application/json
- body字段====》
-  {
- "name": "api",
- "password": "Sxf@123456"
-}
-返回值：token
-2.网络对象获取
- GET https://10.1.1.1/api/v1/namespaces/public/ipgroups/wan_ip
- header字段==》cookie:token=上一步的token
-返回值："message": "成功"
-3.全量修改该对象
- PUT  https://10.1.1.1/api/v1/namespaces/public/ipgroups/wan_ip
- header字段==》cookie:token=上一步的token
- body字段====》
- {
-    "businessType": "IP",
- "name": "wan_ip",
- "ipRanges": [
-  {
-   "start": "61.189.121.42"
-  }
- ]
-}
-返回值： "message": "成功"
-4.用户注销 (可不做)
-*/
-
 func Request(method string, url string, body []byte) (*http.Response, error) {
 
 	log.Println("Request:", method, url, len(body))
