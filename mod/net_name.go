@@ -28,3 +28,9 @@ type IGroupData struct {
 	Important    string     `json:"important"`
 	Hasref       bool       `json:"hasref"`
 }
+
+type PutIGroup struct {
+	BusinessType string     `json:"businessType"`
+	Name         string     `json:"name"`
+	IPRanges     []IPRanges `json:"ipRanges"`
+}
