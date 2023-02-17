@@ -20,4 +20,5 @@ var (
 	User     UserStruct
 	Name     string
 	Password string
+	NetName  string
 )

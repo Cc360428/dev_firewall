@@ -3,6 +3,7 @@ package crontab
 import (
 	"github.com/robfig/cron/v3"
 	"log"
+	"update/update"
 )
 
 func Start() {
@@ -18,9 +19,12 @@ func start() {
 		log.Println("凌晨触发")
 	})
 
-	c.AddFunc("@every 1m", func() {
+	c.AddFunc("@every 30s", func() {
 		log.Println("1分钟触发一次")
-
+		err := update.GetNetName()
+		if err != nil {
+			log.Println("请求发生错误了", err.Error())
+		}
 	})
 
 	c.Start()

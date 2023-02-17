@@ -46,6 +46,6 @@ func Login() error {
 	User.Token = loginResponse.Data.LoginResult.Token
 	User.Namespace = loginResponse.Data.Namespace
 	User.Role = loginResponse.Data.Role
-	log.Println("请求最后回应：", loginResponse)
+	log.Println("login 请求最后回应：", loginResponse)
 	return nil
 }
