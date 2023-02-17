@@ -8,10 +8,3 @@
  */
 
 package consts
-
-const (
-	BaseURL       = "https://10.1.1.1/api/v1/namespaces/public/" // baseURL
-	Login         = "login"                                      // login
-	ipGroupsWanIp = "ipgroups/wan_ip"                            // 网络对象获取 （get/put）
-
-)

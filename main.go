@@ -1,18 +1,38 @@
 package main
 
-import "update/crontab"
+import (
+	"flag"
+	"log"
+	"os"
+	"update/crontab"
+	"update/update"
+)
 
-/*
-*
+var hosts string
+var name string
+var password string
 
-	// 目标设备地址：10.1.1.1
-	// 访问方式 https://10.1.1.1 用户密码：admin/Sxf@123456
-	// API接入用户：api/Sxf@123456
-*/
+func init() {
+	flag.StringVar(&hosts, "host", "10.1.1.1", "服务地址")
+	flag.StringVar(&name, "name", "api", "用户名")
+	flag.StringVar(&password, "password", "Sxf@123456", "密码")
+	flag.Parse()
+}
 
 func main() {
-	//crontab.Start()
-	crontab.Login()
+	log.Println(hosts, name, password)
+
+	update.Hosts = hosts
+	update.Name = name
+	update.Password = password
+
+	err := update.Login()
+	if err != nil {
+		log.Println(err)
+		os.Exit(1)
+	}
+
+	crontab.Start()
 	ch := make(chan bool)
 	<-ch
 }
