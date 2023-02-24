@@ -11,6 +11,8 @@ package update
 
 import (
 	"encoding/json"
+	"fmt"
+	"github.com/Cc360428/HelpPackage/monitor_message"
 	"io"
 	"log"
 	"net/http"
@@ -84,6 +86,9 @@ func PutNetName(publicIp string) error {
 	if inResponse.Code != 0 {
 		return err
 	}
+
+	message := fmt.Sprintf("PublicIp:%v", publicIp)
+	monitor_message.Send("info", message, true)
 
 	return nil
 }
