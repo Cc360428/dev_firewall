@@ -16,9 +16,4 @@ type UserStruct struct {
 	Namespace string
 }
 
-var (
-	User     UserStruct
-	Name     string
-	Password string
-	NetName  string
-)
+var User UserStruct

@@ -16,11 +16,12 @@ import (
 	"io"
 	"log"
 	"net/http"
+	"update/configs"
 	"update/mod"
 )
 
 func GetNetName() error {
-	response, err := Request(http.MethodGet, ipGroupsWanIp+NetName, nil)
+	response, err := Request(http.MethodGet, ipGroupsWanIp+configs.Base.NetName, nil)
 	if err != nil {
 		return err
 	}
@@ -59,7 +60,7 @@ func PutNetName(publicIp string) error {
 
 	var marshal, err = json.Marshal(&mod.PutIGroup{
 		BusinessType: "IP",
-		Name:         NetName,
+		Name:         configs.Base.NetName,
 		IPRanges:     []mod.IPRanges{{Start: publicIp}},
 	})
 
@@ -67,7 +68,7 @@ func PutNetName(publicIp string) error {
 		return err
 	}
 
-	response, err := Request(http.MethodPut, ipGroupsWanIp+NetName, marshal)
+	response, err := Request(http.MethodPut, ipGroupsWanIp+configs.Base.NetName, marshal)
 	if err != nil {
 		return err
 	}

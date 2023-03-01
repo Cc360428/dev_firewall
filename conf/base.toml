@@ -1,0 +1,6 @@
+BaseHosts = "10.1.1.1"
+Name = "api"
+Password = "Sxf@123456"
+NetName = "wan_ip"
+
+SendMessage = "9aec70a47db2a6bbea12682f113e15d86b66fae93bd9f5d70391557369a55798"

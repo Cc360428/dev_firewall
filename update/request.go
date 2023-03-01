@@ -15,9 +15,8 @@ import (
 	"log"
 	"net/http"
 	"time"
+	"update/configs"
 )
-
-var Hosts string
 
 const (
 	front         = "https://"
@@ -30,7 +29,7 @@ const (
 func Request(method string, url string, body []byte) (*http.Response, error) {
 
 	log.Println("Request:", method, url, len(body))
-	req, err := http.NewRequest(method, front+Hosts+base+url, bytes.NewBuffer(body))
+	req, err := http.NewRequest(method, front+configs.Base.BaseHosts+base+url, bytes.NewBuffer(body))
 	if err != nil {
 		log.Println("NewRequest error:", err)
 		return nil, err

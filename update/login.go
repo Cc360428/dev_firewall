@@ -14,14 +14,15 @@ import (
 	"io"
 	"log"
 	"net/http"
+	"update/configs"
 	"update/mod"
 )
 
 func Login() error {
 
 	var marshal, err = json.Marshal(&mod.LoginRequest{
-		Name:     Name,
-		Password: Password,
+		Name:     configs.Base.Name,
+		Password: configs.Base.Password,
 	})
 	if err != nil {
 		return err
